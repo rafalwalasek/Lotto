@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lotto</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <h1>LOTTO</h1>
+
+    <form th:action="@{/save-to-db}" th:method="post">
+
+        <label>First name:</label><br>
+        <input type="text" name="name" class="input-cl"><br>
+        <label>Last name:</label><br>
+        <input type="text" name="surname" class="input-cl"><br>
+        <label>Age:</label><br>
+        <input type="text" name="age" class="input-cl"><br>
+        <label>E-mail:</label><br>
+        <input type="text" name="email" class="input-cl"><br><br>
+
+        <input type="submit" value="Dołącz do gry" class="btn">
+
+    </form>
+
+</body>
+</html>
