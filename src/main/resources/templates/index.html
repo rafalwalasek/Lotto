@@ -10,6 +10,8 @@
 
     <h1>LOTTO</h1>
 
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
     <form th:action="@{/save-to-db}" th:method="post">
 
         <label>First name:</label><br>

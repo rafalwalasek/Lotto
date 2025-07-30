@@ -26,3 +26,17 @@ body {
         .btn:hover {
             background-color: darkgray;
         }
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #00cc66;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+        .back-link:hover {
+            background-color: #00994d;
+        }
