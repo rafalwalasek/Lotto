@@ -8,24 +8,43 @@
 </head>
 <body>
 
-    <h1>LOTTO</h1>
+    <div class="wrapper">
 
-    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+        <h1>GRA LOTTO</h1>
 
-    <form th:action="@{/save-to-db}" th:method="post">
+        <hr class="custom-line">
 
-        <label>First name:</label><br>
-        <input type="text" name="name" class="input-cl"><br>
-        <label>Last name:</label><br>
-        <input type="text" name="surname" class="input-cl"><br>
-        <label>Age:</label><br>
-        <input type="text" name="age" class="input-cl"><br>
-        <label>E-mail:</label><br>
-        <input type="text" name="email" class="input-cl"><br><br>
+        <h2>Nie masz konta? Zarejestruj się</h2>
+        <p th:if="${registerError}" th:text="${registerError}" style="color:red;"></p>
 
-        <input type="submit" value="Dołącz do gry" class="btn">
+        <form th:action="@{/save-to-db}" th:method="post">
+            <label>Imię</label><br>
+            <input type="text" name="name" class="input-cl"><br>
+            <label>Wiek:</label><br>
+            <input type="text" name="age" class="input-cl"><br>
+            <label>E-mail:</label><br>
+            <input type="email" name="email" class="input-cl"><br>
+            <label>Hasło:</label><br>
+            <input type="password" name="password" class="input-cl"><br>
 
-    </form>
+            <button type="submit" class="form-button">Zarejestruj się</button>
+        </form>
+
+        <hr class="custom-line">
+
+        <h2>Masz konto? Zaloguj się</h2>
+        <p th:if="${loginError}" th:text="${loginError}" style="color:red;"></p>
+
+        <form th:action="@{/user-panel}" th:method="post">
+            <label>E-mail:</label><br>
+            <input type="email" name="email" class="input-cl"><br>
+            <label>Hasło:</label><br>
+            <input type="password" name="password" class="input-cl"><br>
+
+            <button type="submit" class="form-button">Zaloguj się i graj</button>
+        </form>
+
+    </div>
 
 </body>
 </html>

@@ -1,9 +1,6 @@
 package pl.rafal.lotto.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Player {
@@ -11,9 +8,12 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String surname;
     private int age;
     private String email;
+    private String password;
+
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private Balance balance;
 
     public Player() {}
 
@@ -23,14 +23,17 @@ public class Player {
     public String getName() {
         return name;
     }
-    public String getSurname() {
-        return surname;
-    }
     public int getAge() {
         return age;
     }
     public String getEmail() {
         return email;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public Balance getBalance() {
+        return balance;
     }
 
     public void setId(Long id) {
@@ -39,13 +42,16 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
     public void setAge(int age) {
         this.age = age;
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setBalance(Balance balance) {
+        this.balance = balance;
     }
 }
