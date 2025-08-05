@@ -66,3 +66,24 @@ body {
         .form-button:hover {
             background-color: #00994d;
         }
+    .success-message {
+        font-size: 24px;
+        color: #2e7d32;
+        text-align: center;
+        margin: 40px 0;
+    }
+        .play-button {
+            display: block;
+            padding: 12px 24px;
+            background-color: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            margin: 0 auto;
+            width: 100px;
+            text-align: center;
+        }
+            .play-button:hover {
+                background-color: #1565c0;
+            }
