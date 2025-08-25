@@ -3,10 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>User Panel</title>
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-    <h1>Panel użytkownika: <span th:text="${player.name}"></span>!</h1>
+    <div class="wrapper-panel">
+
+        <div class="user-panel">
+            <div class="top-row">
+
+                <div class="logo">
+                    <img src="pilka.png" alt="Logo" />
+                </div>
+                <div class="welcome">
+                    Witaj <span th:text="${player.name}"></span>!
+                </div>
+                <div class="datetime">
+                    <span id="date-time"></span>
+                </div>
+
+            </div>
+            <div class="center-row">
+                <div class="balance">
+                    Saldo: <!--<span th:text="${player.balance}"></span>--> 0 zł
+                </div>
+                <div class="tickets">
+                    Zakupione losy: <!--<span th:text="${player.tickets}"></span>--> 0
+                </div>
+                <div class="deposit">
+                    <button>Wpłata 10 zł</button>
+                    <button>Wpłata 20 zł</button>
+                </div>
+
+            </div>
+            <div class="bottom-row">
+
+                <div class="actions">
+                    <button>Graj</button>
+                    <button>Sprawdź wyniki</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const formatted = now.toLocaleString();
+            document.getElementById('date-time').textContent = formatted;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
 
 </body>
 </html>
