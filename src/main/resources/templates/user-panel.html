@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>User Panel</title>
 
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -12,7 +12,6 @@
 
         <div class="user-panel">
             <div class="top-row">
-
                 <div class="logo">
                     <img src="pilka.png" alt="Logo" />
                 </div>
@@ -22,42 +21,97 @@
                 <div class="datetime">
                     <span id="date-time"></span>
                 </div>
-
             </div>
-            <div class="center-row">
-                <div class="balance">
-                    Saldo: <!--<span th:text="${player.balance}"></span>--> 0 zł
-                </div>
-                <div class="tickets">
-                    Zakupione losy: <!--<span th:text="${player.tickets}"></span>--> 0
-                </div>
-                <div class="deposit">
-                    <button>Wpłata 10 zł</button>
-                    <button>Wpłata 20 zł</button>
-                </div>
 
-            </div>
-            <div class="bottom-row">
-
-                <div class="actions">
-                    <button>Graj</button>
-                    <button>Sprawdź wyniki</button>
+            <div class="main-row">
+                <div class="left-column">
+                    <div class="balance">
+                        Saldo: 0 zł
+                    </div>
+                    <div class="deposit">
+                        <button>Wpłata<br>10 zł</button>
+                        <button>Wpłata<br>20 zł</button>
+                    </div>
+                    <div class="tickets">
+                        Zakupione losy: 0
+                    </div>
                 </div>
-
+                <div class="right-column">
+                    <div class="actions">
+                        <button onclick="showPanel('game')">Graj</button>
+                        <button onclick="showPanel('results')">Sprawdź wyniki</button>
+                    </div>
+                    <div id="game-panel" class="panel hidden">
+                        <h3>Wybierz 6 liczb</h3>
+                        <div class="numbers">
+                            <button>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button>6</button>
+                            <button>7</button>
+                            <button>8</button>
+                            <button>9</button>
+                            <button>10</button>
+                            <button>11</button>
+                            <button>12</button>
+                            <button>13</button>
+                            <button>14</button>
+                            <button>15</button>
+                            <button>16</button>
+                            <button>17</button>
+                            <button>18</button>
+                            <button>19</button>
+                            <button>20</button>
+                            <button>21</button>
+                            <button>22</button>
+                            <button>23</button>
+                            <button>24</button>
+                            <button>25</button>
+                            <button>26</button>
+                            <button>27</button>
+                            <button>28</button>
+                            <button>29</button>
+                            <button>30</button>
+                            <button>31</button>
+                            <button>32</button>
+                            <button>33</button>
+                            <button>34</button>
+                            <button>35</button>
+                            <button>36</button>
+                            <button>37</button>
+                            <button>38</button>
+                            <button>39</button>
+                            <button>40</button>
+                            <button>41</button>
+                            <button>42</button>
+                            <button>43</button>
+                            <button>44</button>
+                            <button>45</button>
+                            <button>46</button>
+                            <button>47</button>
+                            <button>48</button>
+                            <button>49</button>
+                        </div>
+                        <div class="buy-button">
+                            <button class="btn-right">Zakup kupon</button>
+                        </div>
+                    </div>
+                    <div id="results-panel" class="panel hidden">
+                        <h3>Twoje losy</h3>
+                        <ul>
+                            <li>Los nr 1: 3, 7, 15, 22, 41</li>
+                            <li>Los nr 2: 5, 12, 18, 29, 37</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const formatted = now.toLocaleString();
-            document.getElementById('date-time').textContent = formatted;
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-    </script>
+    <script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>
