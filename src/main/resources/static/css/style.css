@@ -152,11 +152,9 @@ body {
                     gap: 0.5rem;
                     margin-bottom: auto;
                 }
-                    .deposit button {
-                        background: #bbf7d0;
-                        color: #065f46;
-                        border: 1px solid #86efac;
-                        padding: 0.5rem 1.0rem;
+                    .deposit-btn {
+                        border: 1px solid;
+                        padding: 0.5rem 1rem;
                         margin: 0.3rem;
                         border-radius: 8px;
                         cursor: pointer;
@@ -164,16 +162,36 @@ body {
                         font-size: 0.95rem;
                         transition: all 0.3s ease;
                     }
-                        .deposit button:hover {
-                            background: #86efac;
-                            color: #064e3b;
-                            transform: translateY(-2px);
-                            box-shadow: 0 4px 8px rgba(6, 95, 70, 0.25);
+                        .deposit-btn.green {
+                            background: #bbf7d0;
+                            color: #065f46;
+                            border-color: #86efac;
                         }
-                            .deposit button:active {
-                                transform: translateY(1px) scale(0.97);
-                                box-shadow: 0 2px 5px rgba(6, 95, 70, 0.2);
+                            .deposit-btn.green:hover {
+                                background: #86efac;
+                                color: #064e3b;
+                                transform: translateY(-2px);
+                                box-shadow: 0 4px 8px rgba(6, 95, 70, 0.25);
                             }
+                                .deposit-btn.green:active {
+                                    transform: translateY(1px) scale(0.97);
+                                    box-shadow: 0 2px 5px rgba(6, 95, 70, 0.2);
+                                }
+                        .deposit-btn.blue {
+                            background: #bfdbfe;
+                            color: #1e3a8a;
+                            border-color: #93c5fd;
+                        }
+                            .deposit-btn.blue:hover {
+                                background: #93c5fd;
+                                color: #1e40af;
+                                transform: translateY(-2px);
+                                box-shadow: 0 4px 8px rgba(30, 58, 175, 0.25);
+                            }
+                                .deposit-btn.blue:active {
+                                    transform: translateY(1px) scale(0.97);
+                                    box-shadow: 0 2px 5px rgba(30, 58, 175, 0.2);
+                                }
                 .tickets {
                     margin-top: auto;
                 }
@@ -269,3 +287,38 @@ body {
                             background: #86efac;
                             transform: scale(1.05);
                         }
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+}
+    .payment-btn {
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 200px;
+        text-align: center;
+        transition: all 0.2s ease;
+        margin-bottom: 10px;
+    }
+        .payment-btn.green {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .payment-btn.blue {
+            background-color: #3b82f6;
+            color: white;
+        }
+            .payment-btn.green:hover,
+            .payment-btn.blue:hover {
+                transform: scale(1.05);
+            }
+                .payment-btn.green:active,
+                .payment-btn.blue:active {
+                    transform: scale(0.95);
+                }

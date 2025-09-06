@@ -12,7 +12,7 @@ public class Player {
     private String email;
     private String password;
 
-    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Balance balance;
 
     public Player() {}

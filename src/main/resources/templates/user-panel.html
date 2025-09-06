@@ -26,12 +26,21 @@
             <div class="main-row">
                 <div class="left-column">
                     <div class="balance">
-                        Saldo: 0 zł
+                        Saldo: <span th:text="${balance.amount}"></span> zł
                     </div>
                     <div class="deposit">
-                        <button>Wpłata<br>10 zł</button>
-                        <button>Wpłata<br>20 zł</button>
+                        <button class="deposit-btn green" data-amount="10">Wpłata<br>10 zł</button>
+                        <button class="deposit-btn blue" data-amount="20">Wpłata<br>20 zł</button>
                     </div>
+                    <div class="payment-methods" style="display: none;">
+                        <button class="payment-btn" data-method="Przelew">Przelew</button>
+                        <button class="payment-btn" data-method="PayPal">PeyPal</button>
+                        <button class="payment-btn" data-method="BLIK">BLIK</button>
+                    </div>
+                    <form id="deposit-form" th:action="@{/deposit}" method="post">
+                        <input type="hidden" name="amount" id="deposit-amount">
+                        <input type="hidden" name="method" id="deposit-method">
+                    </form>
                     <div class="tickets">
                         Zakupione losy: 0
                     </div>

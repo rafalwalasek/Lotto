@@ -1,21 +1,27 @@
 package pl.rafal.lotto.controller;
 
 import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.rafal.lotto.model.Balance;
 import pl.rafal.lotto.model.Player;
 import pl.rafal.lotto.repository.PlayerRepository;
+import pl.rafal.lotto.service.PaymentService;
 
 @Controller
 public class LottoController {
     private final PlayerRepository playerRepository;
+    private final PaymentService paymentService;
 
-    public LottoController(PlayerRepository playerRepository) {
+    public LottoController(PlayerRepository playerRepository, PaymentService paymentService) {
         this.playerRepository = playerRepository;
+        this.paymentService = paymentService;
     }
 
     @GetMapping("/")
@@ -51,6 +57,15 @@ public class LottoController {
         }
 
         model.addAttribute("player", player);
+
+        if (player.getBalance() != null) {
+            model.addAttribute("balance", player.getBalance());
+        } else {
+            Balance balance = new Balance();
+            balance.setAmount(0);
+            model.addAttribute("balance", balance);
+        }
+
         return "user-panel";
     }
 
@@ -64,6 +79,18 @@ public class LottoController {
         }
 
         session.setAttribute("loggedPlayer", dbPlayer);
+        return "redirect:/user-panel";
+    }
+
+    @PostMapping("/deposit")
+    public String deposit(HttpSession session, @RequestParam("amount") int amount, @RequestParam("method") String method) {
+        Player player = (Player) session.getAttribute("loggedPlayer");
+        if (player == null) {
+            return "redirect:/";
+        }
+
+        paymentService.deposit(player, amount, method);
+
         return "redirect:/user-panel";
     }
 }

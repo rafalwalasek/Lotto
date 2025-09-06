@@ -2,17 +2,15 @@ package pl.rafal.lotto.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 @Entity
 public class Balance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal amount;
+    private int amount;
 
     @OneToOne
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player_id", unique = true)
     private Player player;
 
     public Balance() {}
@@ -20,7 +18,7 @@ public class Balance {
     public Long getId() {
         return id;
     }
-    public BigDecimal getAmount() {
+    public int getAmount() {
         return amount;
     }
     public Player getPlayer() {
@@ -30,7 +28,7 @@ public class Balance {
     public void setId(Long id) {
         this.id = id;
     }
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
     public void setPlayer(Player player) {
