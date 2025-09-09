@@ -24,7 +24,7 @@ public class LottoController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
@@ -92,5 +92,11 @@ public class LottoController {
         paymentService.deposit(player, amount, method);
 
         return "redirect:/user-panel";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/index";
     }
 }
