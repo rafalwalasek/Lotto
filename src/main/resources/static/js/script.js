@@ -59,3 +59,19 @@ depositButtons.forEach(btn => {
         paymentButtons.forEach(p => p.classList.add(colorClass));
     });
 });
+
+const NUMBER_BTN = document.querySelectorAll('.number-btn');
+let selected = [];
+
+NUMBER_BTN.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const value = btn.textContent;
+        if (selected.includes(value)) {
+            selected = selected.filter(num => num !== value);
+            btn.classList.remove('active');
+        } else if (selected.length < 6) {
+            selected.push(value);
+            btn.classList.add('active');
+        }
+    });
+});
