@@ -44,7 +44,7 @@
                         <input type="hidden" name="method" id="deposit-method">
                     </form>
                     <div class="tickets">
-                        Zakupione losy: 0
+                        Zakupione losy: <span th:text="${balance.count}"></span>
                     </div>
                 </div>
                 <div class="right-column">
@@ -105,9 +105,13 @@
                             <button class="number-btn">48</button>
                             <button class="number-btn">49</button>
                         </div>
-                        <div class="buy-button">
-                            <button class="btn-right">Zakup kupon</button>
-                        </div>
+                        <form id="couponForm" th:action="@{/buyCoupon}" method="POST">
+                            <div class="buy-button">
+                                <button class="btn-right">Zakup kupon<br>3 zł</button>
+                            </div>
+                            <input type="hidden" name="amount" value="3">
+                            <input type="hidden" name="numbers" id="numbersField">
+                        </form>
                     </div>
                     <div id="results-panel" class="panel hidden">
                         <h3>Twoje losy</h3>

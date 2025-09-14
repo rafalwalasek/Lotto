@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('deposit-form');
     const amountInput = document.getElementById('deposit-amount');
     const methodInput = document.getElementById('deposit-method');
-
     depositButtons.forEach(button => {
         button.addEventListener('click', () => {
             const amount = button.getAttribute('data-amount');
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentDiv.style.display = 'block';
         });
     });
-
     paymentButtons.forEach(button => {
         button.addEventListener('click', () => {
             const method = button.getAttribute('data-method');
@@ -44,25 +42,20 @@ document.addEventListener('DOMContentLoaded', function () {
 const depositButtons = document.querySelectorAll('.deposit-btn');
 const paymentButtons = document.querySelectorAll('.payment-btn');
 const paymentContainer = document.querySelector('.payment-methods');
-
 depositButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         paymentContainer.style.display = 'flex';
-
         paymentButtons.forEach(p => {
             p.classList.remove('green', 'blue');
         });
-
         const value = btn.dataset.amount;
         const colorClass = value === "10" ? 'green' : 'blue';
-
         paymentButtons.forEach(p => p.classList.add(colorClass));
     });
 });
 
 const NUMBER_BTN = document.querySelectorAll('.number-btn');
 let selected = [];
-
 NUMBER_BTN.forEach(btn => {
     btn.addEventListener('click', () => {
         const value = btn.textContent;
@@ -72,6 +65,21 @@ NUMBER_BTN.forEach(btn => {
         } else if (selected.length < 6) {
             selected.push(value);
             btn.classList.add('active');
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("#couponForm");
+    const numbersField = document.querySelector("#numbersField");
+
+    form.addEventListener("submit", (e) => {
+        console.log("Wybrane liczby przed wysłaniem:", selected);
+        if (selected.length !== 6) {
+            e.preventDefault();
+            alert("Musisz wybrać dokładnie 6 piłek!");
+        } else {
+            numbersField.value = selected.join(",");
         }
     });
 });

@@ -44,6 +44,8 @@ public class LottoController {
             return "index";
         }
 
+        player.setBalance(new Balance(0, 0));
+
         playerRepository.save(player);
         return "save-to-db";
     }
@@ -98,5 +100,30 @@ public class LottoController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/index";
+    }
+
+    @PostMapping("/buyCoupon")
+    public String buyCoupon(HttpSession session, @RequestParam("amount") int amount, @RequestParam("numbers") String numbers) {
+        Player player = (Player) session.getAttribute("loggedPlayer");
+        if (player == null) {
+            return "redirect:/";
+        }
+
+        String[] chosen = numbers.split(",");
+        if (chosen.length != 6) {
+            return "redirect:/user-panel";
+        }
+
+        Balance balance = player.getBalance();
+        if (balance.getAmount() < amount || balance.getCount() >= 2) {
+            return "redirect:/user-panel";
+        }
+
+        balance.setCount(balance.getCount() + 1);
+        balance.setAmount(balance.getAmount() - amount);
+
+        playerRepository.save(player);
+
+        return "redirect:/user-panel";
     }
 }
