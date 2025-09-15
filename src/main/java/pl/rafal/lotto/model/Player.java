@@ -2,6 +2,9 @@ package pl.rafal.lotto.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Player {
     @Id
@@ -14,6 +17,8 @@ public class Player {
 
     @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Balance balance;
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Ticket> tickets = new ArrayList<>();
 
     public Player() {}
 
@@ -35,6 +40,9 @@ public class Player {
     public Balance getBalance() {
         return balance;
     }
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -53,5 +61,8 @@ public class Player {
     }
     public void setBalance(Balance balance) {
         this.balance = balance;
+    }
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.rafal.lotto.model.Balance;
 import pl.rafal.lotto.model.Player;
+import pl.rafal.lotto.model.Ticket;
 import pl.rafal.lotto.repository.PlayerRepository;
 import pl.rafal.lotto.service.PaymentService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LottoController {
@@ -118,6 +122,17 @@ public class LottoController {
         if (balance.getAmount() < amount || balance.getCount() >= 2) {
             return "redirect:/user-panel";
         }
+
+        List<Integer> chosenNumbers = new ArrayList<>();
+        for (String s : chosen) {
+            chosenNumbers.add(Integer.parseInt(s));
+        }
+
+        Ticket ticket = new Ticket();
+        ticket.setNumbers(chosenNumbers);
+        ticket.setPlayer(player);
+
+        player.getTickets().add(ticket);
 
         balance.setCount(balance.getCount() + 1);
         balance.setAmount(balance.getAmount() - amount);
