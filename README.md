@@ -5,7 +5,7 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
 ## Zasady działania
 
 ### 1. Zakup losu
-- Cena: **3.50 zł**
+- Cena: **3.00 zł**
 - Limit zakupu: **2 kupony na osobę**
 
 ### 2. Powiększ los
