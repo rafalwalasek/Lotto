@@ -48,7 +48,9 @@ public class LottoController {
             return "index";
         }
 
-        player.setBalance(new Balance(0, 0));
+        Balance balance = new Balance(0, 0);
+        balance.setPlayer(player);
+        player.setBalance(balance);
 
         playerRepository.save(player);
         return "save-to-db";
@@ -71,6 +73,8 @@ public class LottoController {
             balance.setAmount(0);
             model.addAttribute("balance", balance);
         }
+
+        model.addAttribute("tickets", player.getTickets());
 
         return "user-panel";
     }
@@ -119,7 +123,7 @@ public class LottoController {
         }
 
         Balance balance = player.getBalance();
-        if (balance.getAmount() < amount || balance.getCount() >= 2) {
+        if (balance == null || balance.getAmount() < amount || balance.getCount() >= 2) {
             return "redirect:/user-panel";
         }
 
