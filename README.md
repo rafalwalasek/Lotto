@@ -33,9 +33,11 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
   - Potwierdzenie tożsamości wymagane *(email / kod weryfikacyjny)*
 - **Rodzaje nagród**:
   - Główna: **Gotówka (przelew na konto)**
-  - Dodatkowe: **Vouchery, rabaty lub punkty premium w systemie**
 
 ---
 
 ## Instalacja
-Instrukcje techniczne (np. jak uruchomić projekt)
+
+### Wymagania
+- **Java 23** → [pobierz JDK](https://jdk.java.net/23/)
+
