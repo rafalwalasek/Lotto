@@ -46,15 +46,17 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
 ```bash
 git clone https://github.com/rafalwalasek/Lotto.git
 cd Lotto
+```
 
 ### Budowanie projektu
 Pobierz zależności i zbuduj projekt:
 ```bash
 mvn clean install
+```
 
 ### Uruchomienie aplikacji
 Uruchom projekt Spring Boot:
 ```bash
 mvn spring-boot:run
-
+```
 
