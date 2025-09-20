@@ -36,10 +36,22 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
 
 ---
 
+## Technologie
+- **Java 21**
+- **Spring Boot 3.5.3**
+- **Maven**
+- Biblioteki użyte w projekcie:
+  - spring-boot-starter-web
+  - spring-boot-starter-thymeleaf
+  - spring-boot-starter-data-jpa
+  - mysql-connector-j
+
+---
+
 ## Instalacja
 
 ### Wymagania
-- **Java 23** → [pobierz JDK](https://jdk.java.net/23/)
+- **Java 21** → [pobierz JDK](https://jdk.java.net/21/)
 - **Apache Maven** → [instrukcja instalacji](https://maven.apache.org/install.html)
 
 ### Pobranie projektu
@@ -59,4 +71,3 @@ Uruchom projekt Spring Boot:
 ```bash
 mvn spring-boot:run
 ```
-
