@@ -36,6 +36,14 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
 
 ---
 
+## Jak działa?
+
+### 1. Uruchomienie aplikacji
+Użytkownik uruchamia aplikację Spring Boot lokalnie lub na serwerze.
+
+
+---
+
 ## Technologie
 - **Java 21**
 - **Spring Boot 3.5.3**
