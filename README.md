@@ -40,4 +40,9 @@ Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagro
 
 ### Wymagania
 - **Java 23** → [pobierz JDK](https://jdk.java.net/23/)
+- **Apache Maven** → [instrukcja instalacji](https://maven.apache.org/install.html)
 
+### Pobranie projektu
+```bash
+git clone https://github.com/TWOJ-LOGIN/projekt-loterii.git
+cd projekt-loterii
