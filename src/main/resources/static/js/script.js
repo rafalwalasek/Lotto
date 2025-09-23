@@ -83,3 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+setInterval(function() {
+    location.reload();
+}, 60000);

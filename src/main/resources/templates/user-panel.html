@@ -120,6 +120,18 @@
                                 <span th:text="${#strings.arrayJoin(ticket.numbers, ', ')}"></span>
                             </li>
                         </ol>
+                        <div id="numbers-panel" class="panel">
+                            <div th:if="${showNumbers}">
+                                <h3>Wylosowane liczby</h3>
+                                <span th:each="number, iterStat : ${numbers}">
+                                    <span th:text="${number}"></span><span th:if="${!iterStat.last}">,</span>
+                                </span>
+                            </div>
+                            <div th:if="${!showNumbers}">
+                                <p th:text="${message}"></p>
+                            </div>
+                        </div>
+                        <br>
                     </div>
                 </div>
             </div>

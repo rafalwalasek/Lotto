@@ -13,19 +13,22 @@ import pl.rafal.lotto.model.Balance;
 import pl.rafal.lotto.model.Player;
 import pl.rafal.lotto.model.Ticket;
 import pl.rafal.lotto.repository.PlayerRepository;
+import pl.rafal.lotto.service.NumberGeneratorService;
 import pl.rafal.lotto.service.PaymentService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
 
 @Controller
 public class LottoController {
     private final PlayerRepository playerRepository;
     private final PaymentService paymentService;
+    private final NumberGeneratorService numberGeneratorService;
 
-    public LottoController(PlayerRepository playerRepository, PaymentService paymentService) {
+    public LottoController(PlayerRepository playerRepository, PaymentService paymentService, NumberGeneratorService numberGeneratorService) {
         this.playerRepository = playerRepository;
         this.paymentService = paymentService;
+        this.numberGeneratorService = numberGeneratorService;
     }
 
     @GetMapping("/index")
@@ -75,6 +78,18 @@ public class LottoController {
         }
 
         model.addAttribute("tickets", player.getTickets());
+
+        LocalTime now = LocalTime.now();
+        LocalTime drawTime = LocalTime.of(12, 40);
+
+        if (now.isBefore(drawTime)) {
+            model.addAttribute("showNumbers" , false);
+            model.addAttribute("message", "Wyliki losowania o 20:00");
+        } else {
+            model.addAttribute("showNumbers" , true);
+            Set<Integer> numbers = numberGeneratorService.generateLottoNumbers();
+            model.addAttribute("numbers", numbers);
+        }
 
         return "user-panel";
     }
