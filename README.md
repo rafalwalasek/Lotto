@@ -1,6 +1,6 @@
 # Projekt Loterii
 
-Aplikacja umożliwia zakup losów, wybór liczb oraz udział w losowaniu z nagrodami.
+Aplikacja umożliwia: wysłanie kuponu użytkownika, system losuje 6 liczb i sprawdza liczby użytkownika z wylosowanymi liczbami.
 
 ## Zasady działania
 

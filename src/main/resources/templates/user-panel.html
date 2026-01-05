@@ -116,20 +116,20 @@
                     <div id="results-panel" class="panel hidden">
                         <h3>Twoje losy</h3>
                         <ol>
-                            <li th:each="ticket, iterStat : ${tickets}">
-                                <span th:text="${#strings.arrayJoin(ticket.numbers, ', ')}"></span>
+                            <li th:each="ticket : ${tickets}">
+                            <span th:each="num, iterStat : ${ticket.numbers}">
+                                <span th:text="${num}"></span><span th:if="${!iterStat.last}">, </span>
+                            </span>
                             </li>
                         </ol>
-                        <div id="numbers-panel" class="panel">
-                            <div th:if="${showNumbers}">
-                                <h3>Wylosowane liczby</h3>
-                                <span th:each="number, iterStat : ${numbers}">
-                                    <span th:text="${number}"></span><span th:if="${!iterStat.last}">,</span>
-                                </span>
-                            </div>
-                            <div th:if="${!showNumbers}">
-                                <p th:text="${message}"></p>
-                            </div>
+                        <div th:if="${showNumbers}">
+                            <h3>Wylosowane liczby</h3>
+                            <span th:each="number, iterStat : ${numbers}">
+                                <span th:text="${number}"></span><span th:if="${!iterStat.last}">, </span>
+                            </span>
+                        </div>
+                        <div th:if="${!showNumbers}">
+                            <p th:text="${message}"></p>
                         </div>
                         <br>
                     </div>

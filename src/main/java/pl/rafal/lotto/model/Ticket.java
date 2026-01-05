@@ -12,6 +12,8 @@ public class Ticket {
     private Long id;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<Integer> numbers = new ArrayList<>();
+    private int hits;
+    private boolean expired;
 
     @ManyToOne
     @JoinColumn(name = "player_id")
@@ -28,6 +30,12 @@ public class Ticket {
     public Player getPlayer() {
         return player;
     }
+    public int getHits() {
+        return hits;
+    }
+    public boolean isExpired() {
+        return expired;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -37,5 +45,11 @@ public class Ticket {
     }
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+    public void setExpired(boolean expired) {
+        this.expired = expired;
     }
 }

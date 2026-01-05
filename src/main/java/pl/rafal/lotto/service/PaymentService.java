@@ -1,7 +1,8 @@
 package pl.rafal.lotto.service;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+
 import pl.rafal.lotto.model.Balance;
 import pl.rafal.lotto.model.Player;
 import pl.rafal.lotto.repository.PlayerRepository;
@@ -15,19 +16,14 @@ public class PaymentService {
     }
 
     @Transactional
-    public String deposit(Player player, int amount, String method) {
+    public void deposit(Player player, int amount, String method) {
         if (player.getBalance() == null) {
-            Balance balance = new Balance();
-            balance.setAmount(amount);
-            balance.setPlayer(player);
-            player.setBalance(balance);
-        } else {
-            Balance balance = player.getBalance();
-            balance.setAmount(balance.getAmount() + amount);
+            player.setBalance(new Balance(0, 0));
+            player.getBalance().setPlayer(player);
         }
 
-        playerRepository.save(player);
+        player.getBalance().setAmount(player.getBalance().getAmount() + amount);
 
-        return "Wpłacono " + amount + " zł metodą " + method;
+        playerRepository.save(player);
     }
 }
